@@ -1,9 +1,1360 @@
 {
   "_meta": {
     "generated_by": "scripts/distill-goap-patterns.js",
-    "last_run": "2026-05-18T04:21:46.301Z",
-    "total_outcomes_processed": 0,
-    "distinct_action_jurisdiction_pairs": 0
+    "last_run": "2026-05-18T05:29:59.683Z",
+    "total_outcomes_processed": 292,
+    "distinct_action_jurisdiction_pairs": 188
   },
-  "actions": {}
+  "actions": {
+    "ParseCorrection|San Jose CA": {
+      "total": 14,
+      "success_count": 14,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Cutler Bay FL": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Tualatin OR": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Seattle WA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|CA-LA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 95
+    },
+    "ParseCorrection|Artesia CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Beverly Hills CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Bakersfield CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Fullerton CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Roseville CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Friendswood TX": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Huntington Pk CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Atwater CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Canoga Park CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Salinas CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Yuba City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|San Bernardino CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|SF CA": {
+      "total": 4,
+      "success_count": 4,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Sacramento CA": {
+      "total": 3,
+      "success_count": 3,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Miramar FL": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Orlando FL": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|LA CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Compton CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|National City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Walnut Creek CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Glendale CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Los Angeles CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Petaluma CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Ojai CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|McAllen TX": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Terminal Way CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|San Jose CA": {
+      "total": 20,
+      "success_count": 18,
+      "failure_count": 2,
+      "failure_modes": {
+        "project_cancelled": 2
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Santa Clara CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Oxnard CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Sacramento CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Fresno CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Orange CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|San Pedro CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Canoga Park CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Apple Valley CA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Burbank CA": {
+      "total": 2,
+      "success_count": 0,
+      "failure_count": 2,
+      "failure_modes": {
+        "project_cancelled": 2
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Oceanside NY": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Oakland CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Buena Park CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Ceres CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|LA CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Las Vegas NV": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Artesia CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Brookhurst CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Sugarland TX": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Dewitt NY": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Lodi CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Fullerton CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Charleston WV": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|SF CA": {
+      "total": 3,
+      "success_count": 2,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Hemet CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Modesto CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Monrovia CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|San Diego CA": {
+      "total": 2,
+      "success_count": 0,
+      "failure_count": 2,
+      "failure_modes": {
+        "project_cancelled": 2
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|El Cajon CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Newhall CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Brentwood TN": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Anaheim CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Brookhurst CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Hntgtn Bch CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Moreno Valley CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Compton CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Amherst NY": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Long Beach CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Columbus OH": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Salinas CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Yuba City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|San Bernardino CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|La Mesa CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|San Jose CA": {
+      "total": 14,
+      "success_count": 14,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|San Diego CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Ojai CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Compton CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Seattle WA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Fullerton CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Beverly Hills CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Indio CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Roseville CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Canoga Pk CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Petaluma CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Sacramento CA": {
+      "total": 3,
+      "success_count": 3,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Pasadena CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Tualatin OR": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Huntington Pk CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Daly City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|SF CA": {
+      "total": 3,
+      "success_count": 3,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Hayward CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|LA CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|McAllen TX": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Orlando FL": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Miramar FL": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Atwater CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Canoga Park CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Bakersfield CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Glendale CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Walnut Creek CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|Artesia CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Pico Rivera CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|N Hollywood CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Alpharetta GA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|San Jose CA": {
+      "total": 18,
+      "success_count": 18,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Oakland CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Chino CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Encinitas CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Berkeley CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Monrovia CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|SF CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Alhambra CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Oceanside NY": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Ceres CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Atlanta GA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Orem UT": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Artesia CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Fresno CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Garden Grove CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Knoxvillle TN": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Denver CO": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Alhambra CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Emeryville CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Fullerton CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Brentwood TN": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Santa Clara CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Peoria AZ": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|San Pedro CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Garden Grove CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Modesto CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Daly City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Tarzana CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Plano TX": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|South Gate CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Beverly Hills CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Denver CO": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Lodi CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Orange CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Atlanta GA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Columbus OH": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Hollywood CA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "ParseCorrection|Canoga Pk CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Monterey Pk CA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Columbia MD": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Westwood CA": {
+      "total": 2,
+      "success_count": 0,
+      "failure_count": 2,
+      "failure_modes": {
+        "project_cancelled": 2
+      },
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|El Cajon CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Round Rock TX": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Berkeley CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Beverly Hills CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Signal Hill CA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|LA CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|N Hollywood CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Peoria AZ": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Chula Vista CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Pico Rivera CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Sacramento CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Anaheim CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Pasadena CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Long Beach CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Newhall CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Fontana CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ClassifyCorrection|National City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Compton CA": {
+      "total": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Oxnard CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Northridge CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Encinitas CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Daly City CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Chino CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Canoga Park CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Sugarland TX": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Las Vegas NV": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|Buena Park CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "ValidateFix|El Centro CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Chula Vista CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Lathrop CA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Pasadena CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Fontana CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Alpharetta GA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|El Centro CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Northridge CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|South Gate CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Portland OR": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Carlsbad CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Norfolk VA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Memphis TN": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Hollywood (Sunset) CA": {
+      "total": 1,
+      "success_count": 0,
+      "failure_count": 1,
+      "failure_modes": {
+        "project_cancelled": 1
+      },
+      "avg_latency_ms": 0
+    },
+    "PrepareResubmission|Tarzana CA": {
+      "total": 1,
+      "success_count": 1,
+      "failure_count": 0,
+      "failure_modes": {},
+      "avg_latency_ms": 0
+    }
+  }
 }

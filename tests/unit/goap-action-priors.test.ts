@@ -8,7 +8,7 @@
  */
 
 import type { ActionContext, ActionPrior } from '../../src/goap/Action';
-import { getActionPriors } from '../../src/goap/Action';
+import { getActionPriors, _setGoapPatternsForTest } from '../../src/goap/Action';
 import { ParseCorrection } from '../../src/goap/actions/ParseCorrection';
 import type { CorrectionWorldState, GOAPProject } from '../../src/goap/WorldState';
 
@@ -41,6 +41,10 @@ function makeCtx(overrides: Partial<ActionContext> = {}): ActionContext {
     ...overrides,
   };
 }
+
+// Clear the in-process patterns cache before every test so on-disk goap-patterns.json
+// doesn't bleed into tests that expect an empty state.
+beforeEach(() => _setGoapPatternsForTest({ actions: {} }));
 
 // ── getActionPriors: baseline (no data) ──────────────────────────────────────
 
@@ -82,9 +86,9 @@ describe('ParseCorrection — adaptive parser strategy', () => {
         ok: true,
         json: async () => ({
           results: [
-            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', success: false, errorCode: 'nlp_timeout', latencyMs: 5000 } },
-            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', success: false, errorCode: 'nlp_timeout', latencyMs: 4800 } },
-            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', success: true,  latencyMs: 120 } },
+            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', result: { success: false, errorCode: 'nlp_timeout', latencyMs: 5000 } } },
+            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', result: { success: false, errorCode: 'nlp_timeout', latencyMs: 4800 } } },
+            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', result: { success: true,  latencyMs: 120 } } },
           ],
         }),
       } as Response)
@@ -110,8 +114,8 @@ describe('ParseCorrection — adaptive parser strategy', () => {
         ok: true,
         json: async () => ({
           results: [
-            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', success: false, errorCode: 'nlp_timeout', latencyMs: 3000 } },
-            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', success: true,  latencyMs: 100 } },
+            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', result: { success: false, errorCode: 'nlp_timeout', latencyMs: 3000 } } },
+            { metadata: { actionName: 'ParseCorrection', jurisdiction: 'CA-LA', result: { success: true,  latencyMs: 100 } } },
           ],
         }),
       } as Response)
@@ -148,9 +152,9 @@ describe('getActionPriors — live brain fallback aggregation', () => {
       ok: true,
       json: async () => ({
         results: [
-          { metadata: { success: true,  latencyMs: 100 } },
-          { metadata: { success: true,  latencyMs: 200 } },
-          { metadata: { success: false, errorCode: 'parse_error', latencyMs: 50 } },
+          { metadata: { result: { success: true,  latencyMs: 100 } } },
+          { metadata: { result: { success: true,  latencyMs: 200 } } },
+          { metadata: { result: { success: false, errorCode: 'parse_error', latencyMs: 50 } } },
         ],
       }),
     } as Response);

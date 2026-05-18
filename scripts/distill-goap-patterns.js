@@ -31,29 +31,58 @@ const NLP_TIMEOUT_THRESHOLD = 2;
 // Threshold: suggest 'add_retry' when failure rate exceeds this
 const FAILURE_RATE_THRESHOLD = 0.35;
 
+// Brain vector search caps results per query. Query once per action name so
+// the result set is distributed across all action types rather than biased
+// toward whichever embeddings are closest to the generic 'goap_outcome' query.
+const GOAP_ACTION_NAMES = [
+  'ParseCorrection',
+  'ClassifyCorrection',
+  'IdentifyAffectedDocuments',
+  'GenerateFixGuidance',
+  'AutoFixDocument',
+  'RequestUserInput',
+  'ValidateFix',
+  'PrepareResubmission',
+  'SubmitApplication',
+];
+
 async function fetchGoapOutcomes() {
   const headers = { 'Content-Type': 'application/json' };
   if (GOAP_SERVICE_TOKEN) headers['x-service-token'] = GOAP_SERVICE_TOKEN;
 
-  // POST /api/brain/goap-search — machine-to-machine endpoint added in ADR-071 Phase 7.
-  // Uses the same x-service-token auth as /api/brain/goap-outcome.
-  const res = await fetch(`${BRAIN_PROXY_URL}/api/brain/goap-search`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      query:  'goap_outcome',
-      topK:   SEARCH_LIMIT,
-      filter: { category: 'goap_outcome' },
-    }),
-  });
+  const seen = new Set();
+  const all  = [];
 
-  if (!res.ok) {
-    throw new Error(`brain-proxy goap-search returned ${res.status}: ${await res.text()}`);
+  // One search per action name, then one broad fallback sweep
+  const queries = [...GOAP_ACTION_NAMES.map(n => `goap_outcome ${n}`), 'goap_outcome'];
+
+  for (const query of queries) {
+    const res = await fetch(`${BRAIN_PROXY_URL}/api/brain/goap-search`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query,
+        topK:   SEARCH_LIMIT,
+        filter: { category: 'goap_outcome' },
+      }),
+    });
+
+    if (!res.ok) {
+      // Non-fatal — log and continue to next query
+      console.warn(`[distill-goap-patterns] goap-search "${query}" returned ${res.status}`);
+      continue;
+    }
+
+    const data = await res.json();
+    for (const r of data.results ?? []) {
+      if (!seen.has(r.id)) {
+        seen.add(r.id);
+        all.push(r);
+      }
+    }
   }
 
-  const data = await res.json();
-  // The endpoint returns empty results on brain errors rather than 500
-  return data.results ?? [];
+  return all;
 }
 
 function aggregate(outcomes) {
@@ -61,8 +90,8 @@ function aggregate(outcomes) {
 
   for (const outcome of outcomes) {
     const meta = outcome.metadata ?? {};
-    const actionName  = meta.actionName  ?? 'unknown';
-    const jurisdiction = meta.jurisdiction ?? '';
+    const actionName   = meta.actionName  ?? 'unknown';
+    const jurisdiction = (meta.jurisdiction ?? '').replace(/,\s*/g, ' ').trim();
     const key = `${actionName}|${jurisdiction}`;
 
     if (!buckets[key]) {

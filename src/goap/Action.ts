@@ -25,6 +25,13 @@ export interface ActionPrior {
   source:       'patterns' | 'brain' | 'none';
 }
 
+// ── Jurisdiction normalization ────────────────────────────────────────────────
+
+/** Normalize jurisdiction to canonical "City State" format (no comma, trimmed). */
+function normalizeJurisdiction(j: string): string {
+  return j.replace(/,\s*/g, ' ').trim();
+}
+
 // ── Two-tier patterns cache (mirrors jurisdiction_intelligence.py in permitapproved) ──
 
 let _goapPatternsCache: Record<string, unknown> | null = null;
@@ -42,7 +49,7 @@ function _loadGoapPatterns(): Record<string, unknown> {
       const path = require('path') as typeof import('path');
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const fs   = require('fs')   as typeof import('fs');
-      const file = path.join(__dirname, '..', '..', 'data', 'goap-patterns.json');
+      const file = path.join(__dirname, '..', '..', '..', 'data', 'goap-patterns.json');
       if (fs.existsSync(file)) {
         _goapPatternsCache     = JSON.parse(fs.readFileSync(file, 'utf8')) as Record<string, unknown>;
         _goapPatternsCacheTime = now;
@@ -55,6 +62,12 @@ function _loadGoapPatterns(): Record<string, unknown> {
   _goapPatternsCache     = { actions: {} };
   _goapPatternsCacheTime = now;
   return _goapPatternsCache;
+}
+
+/** For tests only: inject patterns directly (bypasses file I/O and TTL). */
+export function _setGoapPatternsForTest(data: Record<string, unknown>): void {
+  _goapPatternsCache     = data;
+  _goapPatternsCacheTime = Date.now();
 }
 
 export type EventEmitter = (event: string, payload?: unknown) => void;
@@ -112,7 +125,7 @@ export async function recordOutcome(
   const body = {
     actionName:    action.name,
     projectId:     p.id,
-    jurisdiction:  p.jurisdiction,
+    jurisdiction:  normalizeJurisdiction(p.jurisdiction ?? ''),
     preconditions: action.preconditions,
     effects:       action.effects,
     result: {
@@ -176,7 +189,7 @@ export async function getActionPriors(
   actionName: string,
   ctx: ActionContext,
 ): Promise<ActionPrior> {
-  const jurisdiction = ctx.project.jurisdiction ?? '';
+  const jurisdiction = normalizeJurisdiction(ctx.project.jurisdiction ?? '');
   const empty: ActionPrior = {
     actionName, jurisdiction,
     total: 0, successCount: 0, failureCount: 0,
@@ -239,12 +252,13 @@ export async function getActionPriors(
     for (const r of results as Array<Record<string, unknown>>) {
       const meta = r.metadata as Record<string, unknown> | undefined;
       if (!meta) continue;
-      if (meta.success === true) successCount++;
-      if (meta.errorCode) {
-        const code = String(meta.errorCode);
+      const result = (meta.result as Record<string, unknown> | undefined) ?? meta;
+      if (result.success === true) successCount++;
+      if (result.errorCode) {
+        const code = String(result.errorCode);
         failureModes[code] = (failureModes[code] ?? 0) + 1;
       }
-      if (typeof meta.latencyMs === 'number') totalLatency += meta.latencyMs;
+      if (typeof result.latencyMs === 'number') totalLatency += result.latencyMs;
     }
 
     return {
