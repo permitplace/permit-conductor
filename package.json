@@ -6,8 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test": "jest --coverage --config=jest.config.ts",
+    "test:watch": "jest --watch --config=jest.config.ts",
     "lint": "eslint src tests --ext .ts",
     "typecheck": "tsc --noEmit",
     "benchmark": "ts-node tests/benchmark/runner.ts"
