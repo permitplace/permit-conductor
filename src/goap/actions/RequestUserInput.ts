@@ -6,6 +6,7 @@
  */
 
 import type { IAction, ActionContext, ActionResult } from '../Action';
+import { recordOutcome } from '../Action';
 import type { CorrectionWorldState } from '../WorldState';
 
 export class RequestUserInput implements IAction {
@@ -35,6 +36,8 @@ export class RequestUserInput implements IAction {
 
     // Signal the executor to pause here.
     // The caller persists state; execution resumes via resolveCorrection().
-    return { success: true, paused: true };
+    const result: ActionResult = { success: true, paused: true };
+    await recordOutcome(this, result, ctx);
+    return result;
   }
 }

@@ -5,6 +5,7 @@
  */
 
 import type { IAction, ActionContext, ActionResult } from '../Action';
+import { recordOutcome } from '../Action';
 import type { CorrectionWorldState } from '../WorldState';
 
 export class ParseCorrection implements IAction {
@@ -45,9 +46,13 @@ export class ParseCorrection implements IAction {
         referenceNumber:     extractRef(rawText),
       };
 
-      return { success: true };
+      const result: ActionResult = { success: true };
+      await recordOutcome(this, result, ctx);
+      return result;
     } catch (err) {
-      return { success: false, error: err instanceof Error ? err.message : String(err) };
+      const result: ActionResult = { success: false, error: err instanceof Error ? err.message : String(err) };
+      await recordOutcome(this, result, ctx);
+      return result;
     }
   }
 }

@@ -6,6 +6,7 @@
  */
 
 import type { IAction, ActionContext, ActionResult } from '../Action';
+import { recordOutcome } from '../Action';
 import type { CorrectionWorldState } from '../WorldState';
 
 export class AutoFixDocument implements IAction {
@@ -51,9 +52,13 @@ export class AutoFixDocument implements IAction {
         docIds,
       });
 
-      return { success: true };
+      const result: ActionResult = { success: true };
+      await recordOutcome(this, result, ctx);
+      return result;
     } catch (err) {
-      return { success: false, error: err instanceof Error ? err.message : String(err) };
+      const result: ActionResult = { success: false, error: err instanceof Error ? err.message : String(err) };
+      await recordOutcome(this, result, ctx);
+      return result;
     }
   }
 }
