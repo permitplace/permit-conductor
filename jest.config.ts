@@ -5,6 +5,7 @@ const config: Config = {
   testEnvironment: 'node',
   roots: ['<rootDir>/tests'],
   testMatch: ['**/*.test.ts'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/tests/benchmark/'],
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: 'coverage',
   moduleNameMapper: {

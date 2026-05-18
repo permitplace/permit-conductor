@@ -421,6 +421,32 @@ describe('ValidateFix', () => {
     const plan = planner.plan(state as CorrectionWorldState, { fixValidated: true }, [action]);
     expect(plan).toEqual([]);
   });
+
+  it('resets state and emits validation_failed when validation fails', async () => {
+    // Subclass ValidateFix to inject a failing validation outcome
+    const { ValidateFix: VF } = await import('../../src/goap/actions/ValidateFix');
+    class FailingValidateFix extends VF {
+      protected override checkValidation(): { passed: boolean; failures: string[] } {
+        return { passed: false, failures: ['DIM-001: Measurement too small'] };
+      }
+    }
+    const failAction = new FailingValidateFix();
+    const worldState = makeWorldState({ userActionComplete: true });
+    const ctx        = makeCtx(worldState);
+
+    const result = await failAction.execute(worldState, ctx);
+
+    // Should return success:true so executor doesn't abort
+    expect(result.success).toBe(true);
+    // State flags should be reset
+    expect(worldState.userActionComplete).toBe(false);
+    expect(worldState.fixGuidanceGenerated).toBe(false);
+    // validation_failed event should be emitted
+    expect(ctx.emit).toHaveBeenCalledWith(
+      'correction:validation_failed',
+      expect.objectContaining({ correctionId: 'corr-1' }),
+    );
+  });
 });
 
 // ---------------------------------------------------------------------------

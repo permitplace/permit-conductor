@@ -8,6 +8,9 @@
 import type { IAction, ActionContext, ActionResult } from '../Action';
 import type { CorrectionWorldState } from '../WorldState';
 
+/** Injectable validation result for testing the failure path. */
+export type ValidationOutcome = { passed: boolean; failures: string[] };
+
 export class ValidateFix implements IAction {
   readonly name = 'ValidateFix';
 
@@ -22,15 +25,22 @@ export class ValidateFix implements IAction {
 
   readonly cost = 1;
 
+  /**
+   * Optional override for the validation result — used in tests to exercise
+   * the failure path without calling a real IPlansReviewSkill.
+   */
+  protected checkValidation(_ctx: ActionContext): ValidationOutcome {
+    // In production: delegates to IPlansReviewSkill.checkCompliance()
+    // For now: optimistic pass — real impl would call the skill.
+    return { passed: true, failures: [] };
+  }
+
   async execute(
     state: CorrectionWorldState,
     ctx: ActionContext,
   ): Promise<ActionResult> {
     try {
-      // In production: delegates to IPlansReviewSkill.checkCompliance()
-      // For now: optimistic pass — real impl would call the skill.
-      const passed = true;
-      const failures: string[] = [];
+      const { passed, failures } = this.checkValidation(ctx);
 
       if (!passed) {
         // Reset planning-relevant flags to allow re-planning
