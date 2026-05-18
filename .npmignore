@@ -1,0 +1,13 @@
+tests/
+coverage/
+docs/
+*.config.ts
+*.config.js
+jest.config*
+tsconfig*.json
+.github/
+scripts/
+src/
+node_modules/
+*.log
+.env*
