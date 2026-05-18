@@ -81,16 +81,22 @@ function aggregate(outcomes) {
     const b = buckets[key];
     b.total++;
 
-    if (meta.success === true) {
+    // The brain stores result fields nested under meta.result (from recordOutcome payload)
+    const result = meta.result ?? meta;
+    const success    = result.success === true;
+    const errorCode  = result.errorCode ?? meta.errorCode;
+    const latencyMs  = result.latencyMs ?? meta.latencyMs;
+
+    if (success) {
       b.success_count++;
     } else {
       b.failure_count++;
-      const code = meta.errorCode ?? 'unknown_error';
+      const code = errorCode ?? 'unknown_error';
       b.failure_modes[code] = (b.failure_modes[code] ?? 0) + 1;
     }
 
-    if (typeof meta.latencyMs === 'number') {
-      b.latency_sum   += meta.latencyMs;
+    if (typeof latencyMs === 'number') {
+      b.latency_sum   += latencyMs;
       b.latency_count += 1;
     }
   }
