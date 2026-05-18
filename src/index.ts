@@ -16,8 +16,8 @@ export { GOAPPlanner } from './goap/GOAPPlanner';
 export { GOAPExecutor } from './goap/GOAPExecutor';
 export { buildWorldState } from './goap/WorldState';
 export type { GOAPProject, Correction as GOAPCorrection, UnifiedPermitWorldState } from './goap/WorldState';
-export type { IAction, ActionContext, ActionResult } from './goap/Action';
-export { recordOutcome } from './goap/Action';
+export type { IAction, ActionContext, ActionResult, ActionPrior } from './goap/Action';
+export { recordOutcome, getActionPriors } from './goap/Action';
 export * from './goap/actions';
 
 // Skill interfaces (type-only — no runtime cost)
