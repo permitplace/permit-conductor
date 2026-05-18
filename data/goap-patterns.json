@@ -1,9 +1,9 @@
 {
   "_meta": {
     "generated_by": "scripts/distill-goap-patterns.js",
-    "last_run": null,
+    "last_run": "2026-05-18T04:21:46.301Z",
     "total_outcomes_processed": 0,
-    "note": "Auto-generated nightly. Edit scripts/distill-goap-patterns.js to change distillation logic."
+    "distinct_action_jurisdiction_pairs": 0
   },
   "actions": {}
 }

@@ -216,7 +216,7 @@ export async function getActionPriors(
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
     if (serviceToken) headers['x-service-token'] = serviceToken;
 
-    const res = await fetch(`${brainProxyUrl}/api/brain/search`, {
+    const res = await fetch(`${brainProxyUrl}/api/brain/goap-search`, {
       method:  'POST',
       headers,
       body:    JSON.stringify({

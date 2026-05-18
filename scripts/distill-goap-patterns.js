@@ -35,7 +35,9 @@ async function fetchGoapOutcomes() {
   const headers = { 'Content-Type': 'application/json' };
   if (GOAP_SERVICE_TOKEN) headers['x-service-token'] = GOAP_SERVICE_TOKEN;
 
-  const res = await fetch(`${BRAIN_PROXY_URL}/api/brain/search`, {
+  // POST /api/brain/goap-search — machine-to-machine endpoint added in ADR-071 Phase 7.
+  // Uses the same x-service-token auth as /api/brain/goap-outcome.
+  const res = await fetch(`${BRAIN_PROXY_URL}/api/brain/goap-search`, {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -46,10 +48,11 @@ async function fetchGoapOutcomes() {
   });
 
   if (!res.ok) {
-    throw new Error(`brain-proxy search returned ${res.status}: ${await res.text()}`);
+    throw new Error(`brain-proxy goap-search returned ${res.status}: ${await res.text()}`);
   }
 
   const data = await res.json();
+  // The endpoint returns empty results on brain errors rather than 500
   return data.results ?? [];
 }
 
