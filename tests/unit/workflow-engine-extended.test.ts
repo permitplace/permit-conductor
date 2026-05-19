@@ -290,6 +290,63 @@ describe('WorkflowEngine — extended coverage', () => {
         }),
       );
     });
+
+    it('calls resubmit() — not submit() — when resubmissionPayload is set', async () => {
+      const submitSpy    = jest.fn();
+      const resubmitSpy  = jest.fn().mockResolvedValue({
+        id:          'sub-resubmit-spy-1',
+        submittedAt: new Date().toISOString(),
+        status:      SubmissionStatusCode.SUBMITTED,
+        referenceId: 'REF-RESUBMIT-SPY-1',
+      });
+
+      const config = makeConfig({
+        submission: {
+          submit:    submitSpy,
+          getStatus: jest.fn(),
+          retrieve:  jest.fn(),
+          resubmit:  resubmitSpy,
+        },
+      });
+
+      const project = makeProject({
+        stage: PermitStage.SUBMIT,
+        submissions: [{
+          id:          'sub-original-1',
+          submittedAt: new Date().toISOString(),
+          status:      SubmissionStatusCode.SUBMITTED,
+        }],
+        resubmissionPayload: {
+          correctionResponse: 'Fee corrected per jurisdiction schedule.',
+          correctionRef:      'REF-CORR-001',
+        },
+      });
+
+      const result = await engine.processStage(project, config, emitMock);
+
+      // resubmit() called with the original submission ID and the correction payload
+      expect(resubmitSpy).toHaveBeenCalledWith(
+        'sub-original-1',
+        expect.objectContaining({ correctionRef: 'REF-CORR-001' }),
+      );
+      // submit() must NOT have been called
+      expect(submitSpy).not.toHaveBeenCalled();
+
+      // New submission recorded (now 2 total)
+      expect(result.project.submissions).toHaveLength(2);
+      expect(result.project.submissions[1].id).toBe('sub-resubmit-spy-1');
+
+      // resubmissionPayload cleared after use
+      expect(result.project.resubmissionPayload).toBeUndefined();
+
+      // isResubmission flag carried in the stage:transition meta
+      expect(emitMock).toHaveBeenCalledWith(
+        'stage:transition',
+        expect.objectContaining({
+          meta: expect.objectContaining({ isResubmission: true }),
+        }),
+      );
+    });
   });
 
   // -------------------------------------------------------------------------

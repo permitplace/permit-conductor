@@ -8,6 +8,7 @@ import {
   PermitStage,
   StageResult,
   StageTransition,
+  Submission,
   CorrectionWorldState,
   SubmissionStatusCode,
 } from '../types';
@@ -188,8 +189,21 @@ export class WorkflowEngine {
   ): Promise<StageResult> {
     const { submission } = config.skills;
 
-    const payload = this.buildPayload(project);
-    const sub = await submission.submit(project.jurisdiction, payload);
+    const activeSubmission = project.submissions[project.submissions.length - 1];
+    const isResubmission   = activeSubmission !== undefined
+                          && project.resubmissionPayload !== undefined;
+
+    let sub: Submission;
+    if (isResubmission) {
+      sub = await submission.resubmit(
+        activeSubmission.id,
+        project.resubmissionPayload as Record<string, unknown>,
+      );
+      // Clear so a second correction round builds a fresh payload
+      project.resubmissionPayload = undefined;
+    } else {
+      sub = await submission.submit(project.jurisdiction, this.buildPayload(project));
+    }
 
     project.submissions.push(sub);
     this.transition(project, PermitStage.SUBMIT, PermitStage.MONITOR);
@@ -198,7 +212,7 @@ export class WorkflowEngine {
       from:    PermitStage.SUBMIT,
       to:      PermitStage.MONITOR,
       project,
-      meta:    { submissionId: sub.id },
+      meta:    { submissionId: sub.id, isResubmission },
     });
 
     return { status: 'ADVANCED', project };
