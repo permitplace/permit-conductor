@@ -79,6 +79,8 @@ export interface ActionContext {
   emit:          EventEmitter;
   /** Optional brain proxy base URL — used by recordOutcome (ADR-071). */
   brainProxyUrl?: string;
+  /** Optional permitapproved base URL — used by ValidateFix for corrections QC. */
+  correctionsQcUrl?: string;
 }
 
 export interface ActionResult {

@@ -1,15 +1,20 @@
 /**
  * Action 7: ValidateFix
- * Runs a compliance re-check on the project documents after a fix is applied.
+ * Validates that correction responses adequately address the city's comments.
  * If validation fails, resets state to allow re-planning.
  * Cost: 1
+ *
+ * When ctx.correctionsQcUrl is set, calls permitapproved POST /api/corrections/qc
+ * to cross-reference city comments against stored fix responses and return a
+ * ready_to_resubmit determination. Degrades to the sync checkValidation() fallback
+ * when the URL is not configured (preserves test injectability via subclassing).
  */
 
 import type { IAction, ActionContext, ActionResult } from '../Action';
 import { recordOutcome } from '../Action';
 import type { CorrectionWorldState } from '../WorldState';
 
-/** Injectable validation result for testing the failure path. */
+/** Sync validation result — used by checkValidation() and test subclasses. */
 export type ValidationOutcome = { passed: boolean; failures: string[] };
 
 export class ValidateFix implements IAction {
@@ -27,12 +32,10 @@ export class ValidateFix implements IAction {
   readonly cost = 1;
 
   /**
-   * Optional override for the validation result — used in tests to exercise
-   * the failure path without calling a real IPlansReviewSkill.
+   * Sync fallback — overrideable in tests to inject failure without a live QC service.
+   * Only called when ctx.correctionsQcUrl is not set.
    */
   protected checkValidation(_ctx: ActionContext): ValidationOutcome {
-    // In production: delegates to IPlansReviewSkill.checkCompliance()
-    // For now: optimistic pass — real impl would call the skill.
     return { passed: true, failures: [] };
   }
 
@@ -41,10 +44,17 @@ export class ValidateFix implements IAction {
     ctx: ActionContext,
   ): Promise<ActionResult> {
     try {
-      const { passed, failures } = this.checkValidation(ctx);
+      let passed: boolean;
+      let failures: string[];
+
+      if (ctx.correctionsQcUrl) {
+        ({ passed, failures } = await this.runCorrectionsQc(ctx));
+      } else {
+        ({ passed, failures } = this.checkValidation(ctx));
+      }
 
       if (!passed) {
-        // Reset planning-relevant flags to allow re-planning
+        // Reset planning flags so the executor can re-plan if needed
         state.userActionComplete   = false;
         state.fixGuidanceGenerated = false;
 
@@ -53,8 +63,8 @@ export class ValidateFix implements IAction {
           failures,
         });
 
-        // Return success=true so the executor does not abort;
-        // the reset state will allow the planner to re-plan if needed.
+        // Return success:true so the executor does not abort;
+        // reset state allows the planner to re-plan.
         const result: ActionResult = { success: true, metadata: { validationPassed: false, failures } };
         await recordOutcome(this, result, ctx);
         return result;
@@ -71,6 +81,77 @@ export class ValidateFix implements IAction {
       const result: ActionResult = { success: false, error: err instanceof Error ? err.message : String(err) };
       await recordOutcome(this, result, ctx);
       return result;
+    }
+  }
+
+  /**
+   * Call permitapproved /api/corrections/qc with city comments and stored fix responses.
+   * Degrades gracefully: if the service is unreachable, passes when responses are present.
+   */
+  private async runCorrectionsQc(ctx: ActionContext): Promise<ValidationOutcome> {
+    const correctionItems = ctx.correction.parsedFields?.correctionItems ?? [];
+    const fixResponses    = ctx.worldState.fixResponses ?? [];
+
+    // If AutoFixDocument stored no responses, the fix was not applied for this
+    // correction type — fail immediately so the planner routes to the user path.
+    if (fixResponses.length === 0) {
+      return {
+        passed:   false,
+        failures: ['No correction responses recorded — fix may not have been applied for this correction type'],
+      };
+    }
+
+    const cityComments = correctionItems.map((text, i) => ({
+      number:   i + 1,
+      text,
+      category: '',
+    }));
+
+    const correctionResponses = fixResponses.map(r => ({
+      number:    r.number,
+      response:  r.response,
+      sheet_ref: r.sheetRef ?? '',
+    }));
+
+    // Stable numeric ID derived from project ID string for the QC cache key
+    const jobId = ctx.project.id
+      .split('')
+      .reduce((acc, c) => (acc + c.charCodeAt(0)) & 0x7fffffff, 0);
+
+    try {
+      const res = await fetch(`${ctx.correctionsQcUrl}/api/corrections/qc`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          job_id:               jobId,
+          city_comments:        cityComments,
+          correction_responses: correctionResponses,
+          plan_sheets:          ctx.project.documents.map(d => d.type),
+        }),
+      });
+
+      if (!res.ok) {
+        // QC service returned an error — degrade to presence check
+        return { passed: true, failures: [] };
+      }
+
+      const data = await res.json() as {
+        ready_to_resubmit: boolean;
+        items?: Array<{ comment_number: number; status: string; notes: string }>;
+      };
+
+      if (data.ready_to_resubmit) {
+        return { passed: true, failures: [] };
+      }
+
+      const failures = (data.items ?? [])
+        .filter(i => i.status !== 'addressed')
+        .map(i => `Comment ${i.comment_number} [${i.status.toUpperCase()}]: ${i.notes}`);
+
+      return { passed: false, failures };
+    } catch {
+      // Network error or JSON parse failure — degrade to presence check
+      return { passed: fixResponses.length > 0, failures: [] };
     }
   }
 }

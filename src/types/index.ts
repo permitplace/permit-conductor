@@ -178,6 +178,8 @@ export interface CorrectionWorldState {
   correctionType?:         CorrectionType;
   autoFixable?:            boolean;
   affectedDocumentIds?:    string[];
+  /** Structured responses written by AutoFixDocument, read by ValidateFix for QC. */
+  fixResponses?:           Array<{ number: number; response: string; sheetRef?: string }>;
 }
 
 // ---------------------------------------------------------------------------
