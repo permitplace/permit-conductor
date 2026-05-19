@@ -259,8 +259,12 @@ export interface ConductorStateStore {
 }
 
 export interface ConductorConfig {
-  skills:     ConductorSkills;
-  stateStore: ConductorStateStore;
+  skills:             ConductorSkills;
+  stateStore:         ConductorStateStore;
+  /** brain-proxy base URL — used by GOAP action outcome recording (ADR-071). */
+  brainProxyUrl?:     string;
+  /** permitapproved base URL — activates ValidateFix corrections QC path. */
+  correctionsQcUrl?:  string;
 }
 
 // ---------------------------------------------------------------------------

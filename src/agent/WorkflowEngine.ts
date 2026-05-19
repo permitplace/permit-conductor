@@ -318,10 +318,12 @@ export class WorkflowEngine {
     const goapCorrection = correction;
 
     const ctx = {
-      project:    goapProject,
-      correction: goapCorrection,
+      project:          goapProject,
+      correction:       goapCorrection,
       worldState,
-      emit:       goapEmit,
+      emit:             goapEmit,
+      brainProxyUrl:    config.brainProxyUrl,
+      correctionsQcUrl: config.correctionsQcUrl,
     };
 
     const result = await this.executor.execute(plan, ctx);
